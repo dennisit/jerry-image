@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.hehua.framework.image.dao.ImageDAO">
+	<select id="getByIds" resultType="com.hehua.framework.image.domain.Image">
+	    select `id`,`fid`,`width`,`height`,`size`,`format`,`status`,`create_time`,`bucket` from `image` where `id` in <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">#{id}</foreach>
+	</select>
+	<select id="getByFids" resultType="com.hehua.framework.image.domain.Image">
+	    select `id`,`fid`,`width`,`height`,`size`,`format`,`status`,`create_time`,`bucket` from `image` where `fid` in <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">#{id}</foreach>
+	</select>
+</mapper>
